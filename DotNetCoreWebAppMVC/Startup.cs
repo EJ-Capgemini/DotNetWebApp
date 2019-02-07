@@ -37,7 +37,16 @@ namespace DotNetCoreWebAppMVC {
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc()
+                .AddRazorPagesOptions(options => {
+                    //options.Conventions.AuthorizePage("/Contact");
+                    options.Conventions.AuthorizeFolder("/Account");
+                    options.Conventions.AuthorizeFolder("/Posts");
+                    //options.Conventions.AllowAnonymousToPage("/Private/PublicPage");
+                    //options.Conventions.AllowAnonymousToFolder("/Private/PublicPages");
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

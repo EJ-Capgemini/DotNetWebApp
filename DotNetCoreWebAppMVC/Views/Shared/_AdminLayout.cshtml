@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,6 +23,7 @@
     @*<link rel="stylesheet" href="~/css/site.css" />*@
     <link rel="stylesheet" href="~/css/style.css" />
     <link rel="stylesheet" href="~/css/responsive.css" />
+    <link rel="stylesheet" href="~/css/admin.css" />
 </head>
 <body>
     @*<header>
@@ -58,82 +63,42 @@
                     <div class="menu_area">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <!-- Logo -->
-                            <a class="navbar-brand" href="#">P</a>
+                            <a class="navbar-brand" href="#">P.Admin</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                             <!-- Menu Area -->
                             <div class="collapse navbar-collapse" id="ca-navbar">
                                 <ul class="navbar-nav ml-auto" id="nav">
-                                    @*<li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>*@
-                                    <li class="nav-item"><a class="nav-link" href="#about">Over mij</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#skills">Vaardigheden</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                                    @*<li class="nav-item"><a class="nav-link" href="#screenshot">Screenshot</a></li>
-        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>*@
-                                    @*<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>*@
+                                    <li class="nav-item active"><a class="nav-link" href="/posts">Berichten</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/posts/create">Nieuw bericht</a></li>
                                 </ul>
                                 @*<div class="sing-up-button d-lg-none">
-                                    <a href="#">Sign Up Free</a>
-                                </div>*@
+                            <a href="#">Sign Up Free</a>
+                        </div>*@
                             </div>
                         </nav>
                     </div>
                 </div>
                 <!-- Signup btn -->
-                <div class="col-12 col-lg-2">
-                    <div class="sing-up-button d-none d-lg-block">
-                        <a href="#contact">Contact</a>
+                @if (SignInManager.IsSignedIn(User)) { }
+                    <div class="col-12 col-lg-2">
+                        <div class="sing-up-button d-none d-lg-block">
+                            <form class="form-inline sing-up-button d-none d-lg-block" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button type="submit" class="">Uitloggen</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    @*<div class="container">*@
-    <div>
+    <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2019 - DotNetCoreWebAppMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>*@
-
-    <!-- ***** Footer Area Start ***** -->
-    <footer class="footer-social-icon text-center section_padding_70 clearfix">
-        <!-- footer logo -->
-        <img id="zombie" src="~/img/zombie-edited.png"/>
-        @*<div class="footer-text">
-            <h2>Portfolio</h2>
-        </div>*@
-        <!-- social icon-->
-        @*<div class="footer-social-icon">
-            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i class="active fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-        </div>*@
-        <div class="footer-menu">
-            <nav>
-                <ul>
-                    <li><a href="#todo">Terms &amp; Conditions</a></li>
-                    <li><a href="#todo">Privacy Policy</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <!-- Foooter Text-->
-        <div class="copyright-text">
-            <!-- ***** Removing this text is now allowed! This template is licensed under CC BY 3.0 ***** -->
-            <p>Copyright ©2019 Portfolio</p>
-        </div>
-    </footer>
-    <!-- ***** Footer Area Start ***** -->
     @*<environment include="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -157,7 +122,6 @@
     <script src="~/js/bootstrap.min.js" asp-append-version="true"></script>
     <script src="~/js/plugins.js" asp-append-version="true"></script>
     <script src="~/js/slick.min.js" asp-append-version="true"></script>
-    <script src="~/js/footer-reveal.min.js" asp-append-version="true"></script>
     <script src="~/js/active.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
