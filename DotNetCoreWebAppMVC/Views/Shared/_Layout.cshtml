@@ -68,14 +68,14 @@
                                     <li class="nav-item"><a class="nav-link" href="#skills">Vaardigheden</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                                     @*<li class="nav-item"><a class="nav-link" href="#screenshot">Screenshot</a></li>
-        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>*@
+                                        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>*@
                                     @*<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>*@
                                 </ul>
                                 @*<div class="sing-up-button d-lg-none">
-                                    <a href="#">Sign Up Free</a>
-                                </div>*@
+                                        <a href="#">Sign Up Free</a>
+                                    </div>*@
                             </div>
                         </nav>
                     </div>
@@ -91,7 +91,7 @@
     </header>
     <!-- ***** Header Area End ***** -->
     @*<div class="container">*@
-    <div>
+    <div style="margin-bottom: 300px !important">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
@@ -105,19 +105,20 @@
         </footer>*@
 
     <!-- ***** Footer Area Start ***** -->
-    <footer class="footer-social-icon text-center section_padding_70 clearfix">
+    <footer class="footer-social-icon text-center clearfix">
+        @*section_padding_70*@
         <!-- footer logo -->
-        <img id="zombie" src="~/img/zombie-edited.png"/>
+        <img id="zombie" src="~/img/zombie-cropped.png" />
         @*<div class="footer-text">
-            <h2>Portfolio</h2>
-        </div>*@
+                <h2>Portfolio</h2>
+            </div>*@
         <!-- social icon-->
         @*<div class="footer-social-icon">
-            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i class="active fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-        </div>*@
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="active fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+            </div>*@
         <div class="footer-menu">
             <nav>
                 <ul>
@@ -160,6 +161,7 @@
     <script src="~/js/footer-reveal.min.js" asp-append-version="true"></script>
     <script src="~/js/active.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/interactive-image.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

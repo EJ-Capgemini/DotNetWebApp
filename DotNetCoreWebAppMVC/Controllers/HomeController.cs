@@ -8,8 +8,23 @@ using DotNetCoreWebAppMVC.Models;
 
 namespace DotNetCoreWebAppMVC.Controllers {
     public class HomeController : Controller {
-        public IActionResult Index() {
-            return View();
+        //public IActionResult Index() {
+        //    return View();
+        //}
+
+        private readonly DotNetCoreWebAppMVC.Data.ApplicationDbContext _context;
+
+        public HomeController(DotNetCoreWebAppMVC.Data.ApplicationDbContext context) {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index() {
+            /*return View(_context.Post.ToList());*/ //.ToListAsync());
+            return View(_context.Post
+                .OrderByDescending(x => x.CreationDate)
+                .Take(5)
+                .ToList()
+            );
         }
 
         public IActionResult Privacy() {
